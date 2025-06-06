@@ -16,6 +16,7 @@ public struct Theme {
   public enum BuiltIn: String {
     case defaultDark = "default-dark"
     case defaultLight = "default-light"
+    case defaultClear = "default-clear"
 
     public func theme() -> Theme {
       return Theme(self.rawValue)
@@ -118,7 +119,12 @@ public struct Theme {
     attributes.forEach { key, value in
       switch EditorConfigProperty.from(rawValue: key) {
       case .backgroundColor:
-        backgroundColor = UniversalColor(hexString: value)
+        // allow "clear" keyword for transparent background
+        if value.lowercased() == "clear" {
+          backgroundColor = UniversalColor.clear
+        } else {
+          backgroundColor = UniversalColor(hexString: value)
+        }
       case .tintColor:
         tintColor = UniversalColor(hexString: value)
       case .cursorColor:

@@ -52,6 +52,10 @@ struct ContentView: View {
 
 <img src="resources/default-light-theme.png" height="400">
 
+#### Default Clear (same as light except the background is transperent)
+
+<img src="resources/default-light-theme.png" height="400">
+
 ### 🧑‍🎨 Custom themes
 
 SwiftDown supports theming by using config `.json` files as [this one](./Sources/SwiftDown/Resources/Themes/default-dark.json)

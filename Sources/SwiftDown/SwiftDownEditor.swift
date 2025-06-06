@@ -57,6 +57,7 @@ public struct SwiftDownEditor: UIViewRepresentable {
       swiftDown.textContainerInset = UIEdgeInsets(
         top: insetsSize, left: insetsSize, bottom: insetsSize, right: insetsSize)
       swiftDown.backgroundColor = theme.backgroundColor
+      swiftDown.isOpaque = theme.backgroundColor.cgColor.alpha == 1.0
       swiftDown.tintColor = theme.tintColor
       swiftDown.textColor = theme.tintColor
       swiftDown.text = text

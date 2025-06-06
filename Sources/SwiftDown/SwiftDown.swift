@@ -18,6 +18,7 @@
       self.init(frame: frame, textContainer: nil)
       self.storage.theme = theme
       self.backgroundColor = theme.backgroundColor
+      self.isOpaque = theme.backgroundColor.cgColor.alpha == 1.0
       self.tintColor = theme.tintColor
       self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
       if hasKeyboardToolbar {
@@ -62,6 +63,8 @@
     convenience init(frame: CGRect, theme: Theme) {
       self.init(frame: frame, textContainer: nil)
       self.storage.theme = theme
+      let isClear = theme.backgroundColor.alphaComponent == 0
+      self.drawsBackground = !isClear
       self.backgroundColor = theme.backgroundColor
     }
 
@@ -120,7 +123,7 @@
     // MARK: - ScrollView setup
     private lazy var scrollView: NSScrollView = {
       let scrollView = NSScrollView()
-      scrollView.drawsBackground = true
+      scrollView.drawsBackground = false
       scrollView.borderType = .noBorder
       scrollView.hasVerticalScroller = true
       scrollView.hasHorizontalRuler = false
@@ -143,7 +146,7 @@
       textView.storage.applyBody = { Theme.applyBody(with: self.theme) }
       textView.storage.theme = theme
       textView.autoresizingMask = .width
-      textView.drawsBackground = true
+      textView.drawsBackground = theme.backgroundColor.alphaComponent > 0
       textView.isEditable = self.isEditable
       textView.isHorizontallyResizable = false
       textView.isVerticallyResizable = true
