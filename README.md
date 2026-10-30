@@ -2,6 +2,20 @@
 
 [![codecov](https://codecov.io/gh/qeude/SwiftDown/branch/main/graph/badge.svg?token=RB6K3Q5QIO)](https://codecov.io/gh/qeude/SwiftDown)
 
+> ## 🔀 Maintained fork
+>
+> This is **[Fletcher-Alderton/SwiftDown](https://github.com/Fletcher-Alderton/SwiftDown)**, a maintained fork of **[qeude/SwiftDown](https://github.com/qeude/SwiftDown)** by Quentin Eude.
+>
+> The upstream repository has been **archived (read-only) since February 2024** and no longer accepts pull requests, so this fork carries the work forward. The original PR proposing these changes ([qeude/SwiftDown#39](https://github.com/qeude/SwiftDown/pull/39)) is open upstream but can no longer be merged there.
+>
+> ### What this fork adds
+>
+> - **New built-in theme: `defaultClear`** — identical to the default light theme, but with a **fully transparent background**. Useful for overlay editors or any UI where the editor should sit on top of an app-supplied background.
+> - **Transparent-colour support in the theme/background pipeline** — `SwiftDown` and `SwiftDownEditor` now skip drawing the background when a theme's colour fields contain the word `clear`, so transparent JSON themes render correctly.
+> - Added a `default-clear.json` theme and documentation for the clear theme.
+>
+> Everything else is unchanged from upstream `develop`. This fork stays in sync with upstream where possible and is the recommended package URL going forward.
+
 ## 📖 Description
 
 A markdown editor component for your SwiftUI apps.
@@ -20,7 +34,10 @@ A markdown editor component for your SwiftUI apps.
 Either use Xcode to add the package dependency or add the following dependency to your Package.swift:
 
 ```
-.package(url: "https://github.com/qeude/SwiftDown.git", from: "0.4.1),
+// Upstream (archived):
+// .package(url: "https://github.com/qeude/SwiftDown.git", from: "0.4.1"),
+// Maintained fork (recommended):
+.package(url: "https://github.com/Fletcher-Alderton/SwiftDown.git", from: "0.4.1"),
 ```
 
 ## 🔧 Usage
